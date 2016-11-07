@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="RadioGroupBar">#b9b993</color>
+    <color name="white">#FFF</color>
+    <color name="red">#F00</color>
+    <color name="bg_white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="gray">#bababa</color>
+    <color name="progrees_color">#0cb2a0</color>
+    <color name="progrees_background">#e8e9eb</color>
+
+    <color name="green">#0DB22E</color>
+</resources>

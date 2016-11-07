@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">KeepRunningDemo1</string>
+    <string name="kilometer">公里</string>
+    <string name="speed">配速</string>
+    <string name="speed1">0655</string>
+    <string name="duration">用时</string>
+    <string name="calorie">卡路里</string>
+    <string name="runninglevel">我的跑步等级</string>
+</resources>
