@@ -78,6 +78,8 @@ public class PracticeFragment extends BaseFragment implements View.OnClickListen
         switch (view.getId()) {
             case R.id.tv_information:
                 FragmentManager fm = getActivity().getFragmentManager();
+
+
 //                fm.beginTransaction()
 //                        //替换为DayFragment
 //                        .replace(R.layout.fragment_day, new DayFragment(),)
