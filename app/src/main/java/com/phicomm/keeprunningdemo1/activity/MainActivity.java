@@ -10,9 +10,11 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.phicomm.keeprunningdemo1.R;
+import com.phicomm.keeprunningdemo1.fragment.DayFragment;
 import com.phicomm.keeprunningdemo1.fragment.DeviceFragment;
 import com.phicomm.keeprunningdemo1.fragment.MeFragment;
 import com.phicomm.keeprunningdemo1.fragment.PracticeFragment;
+import com.phicomm.keeprunningdemo1.fragment.SportInformationFragment;
 
 public class MainActivity extends AppCompatActivity {
     private RadioGroup  bottomBar;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private PracticeFragment mPractice;
     private DeviceFragment   mDevice;
     private MeFragment       mMe;
+
 
     private RadioGroup.OnCheckedChangeListener listener = new RadioGroup.OnCheckedChangeListener() {
         @Override
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+    public DayFragment mDay;
 
 
     private void changeFragment(Fragment frag) {
@@ -64,13 +68,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initFragment();
         initView();
+        initData();
 
         changeFragment(mPractice);
+    }
+
+    private void initData() {
+        mPractice.setOnSkipFragment(new PracticeFragment.onSkipFragmrnt() {
+            @Override
+            public void setOnSkipFragment() {
+                changeFragment(new SportInformationFragment());
+            }
+        });
     }
 
     private void initView() {
         bottomBar = (RadioGroup) findViewById(R.id.bottom_bar);
         bottomBar.setOnCheckedChangeListener(listener);
+
 
     }
 
@@ -78,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         mPractice = new PracticeFragment();
         mDevice = new DeviceFragment();
         mMe = new MeFragment();
+        mDay = new DayFragment();
     }
 
     /**
