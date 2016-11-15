@@ -13,8 +13,10 @@ import com.phicomm.keeprunningdemo1.R;
 import com.phicomm.keeprunningdemo1.fragment.DayFragment;
 import com.phicomm.keeprunningdemo1.fragment.DeviceFragment;
 import com.phicomm.keeprunningdemo1.fragment.MeFragment;
+import com.phicomm.keeprunningdemo1.fragment.MyTrainFragment;
 import com.phicomm.keeprunningdemo1.fragment.PracticeFragment;
 import com.phicomm.keeprunningdemo1.fragment.SportInformationFragment;
+import com.phicomm.keeprunningdemo1.view.TitleBar;
 
 public class MainActivity extends AppCompatActivity {
     private RadioGroup  bottomBar;
@@ -44,12 +46,12 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.rb_bottom_me:
                     changeFragment(mMe);
-
                     break;
             }
         }
     };
-    public DayFragment mDay;
+    public  DayFragment mDay;
+    private TitleBar    mTitleBar;
 
 
     private void changeFragment(Fragment frag) {
@@ -57,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = supportFragmentManager.beginTransaction();
         transaction.replace(R.id.fl_content, frag);
         transaction.commit();
-
-
     }
 
     @Override
@@ -80,12 +80,23 @@ public class MainActivity extends AppCompatActivity {
                 changeFragment(new SportInformationFragment());
             }
         });
+
+        mPractice.setOnSkipTrain(new PracticeFragment.onSkipTrain() {
+            @Override
+            public void setOnSkipTrain() {
+                changeFragment(new MyTrainFragment());
+            }
+        });
+
+
+        mTitleBar.setTitle("Keep Running");
     }
 
     private void initView() {
         bottomBar = (RadioGroup) findViewById(R.id.bottom_bar);
         bottomBar.setOnCheckedChangeListener(listener);
-
+        mTitleBar = (TitleBar) findViewById(R.id.titlebar);
+        mTitleBar.setImmersive(true);
 
     }
 

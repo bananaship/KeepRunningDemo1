@@ -7,9 +7,16 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.phicomm.keeprunningdemo1.R;
+import com.phicomm.keeprunningdemo1.adapter.SportDetailsAdapter;
+import com.phicomm.keeprunningdemo1.bean.SportDetails;
+import com.phicomm.keeprunningdemo1.utils.ListViewUtils;
 import com.phicomm.keeprunningdemo1.view.BarCardThree;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @创建者 xu_hao
@@ -21,15 +28,44 @@ import com.phicomm.keeprunningdemo1.view.BarCardThree;
  */
 public class WeekFragment extends Fragment {
 
-    private View mView;
+    private View     mView;
+    private ListView mLv_train_info;
+
+    private List<SportDetails> list = new ArrayList<>();
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_week, null);
 
-        (new BarCardThree((CardView) mView.findViewById(R.id.card6), getContext())).init();
+        initView();
+        initData();
 
         return mView;
+    }
+
+    private void initData() {
+        SportDetails sportDetails1 = new SportDetails("3.35", "00:41:44", "06'44\"", "467");
+        SportDetails sportDetails2 = new SportDetails("3.35", "00:42:45", "06'45\"", "468");
+        SportDetails sportDetails3 = new SportDetails("3.35", "00:43:46", "06'46\"", "469");
+
+        list.clear();
+
+        list.add(sportDetails1);
+        list.add(sportDetails2);
+        list.add(sportDetails3);
+
+        mLv_train_info.setAdapter(new SportDetailsAdapter(list));
+
+        //动态的改变listview的高度
+        ListViewUtils.setListViewHeightBasedOnChildren(mLv_train_info);
+    }
+
+
+
+    private void initView() {
+        (new BarCardThree((CardView) mView.findViewById(R.id.card6), getContext())).init();
+        mLv_train_info = (ListView) mView.findViewById(R.id.lv_train_info);
     }
 }

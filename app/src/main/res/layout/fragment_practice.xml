@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
@@ -19,7 +18,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-
                 android:text="运动数据"/>
         </RelativeLayout>
 
@@ -70,36 +68,23 @@
             android:layout_height="12dp"
             android:background="@color/gray"/>
         <RelativeLayout
+            android:id="@+id/tv_me_train"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/listview_41bg_normal">
+            android:layout_height="wrap_content" android:background="@mipmap/listview_41bg_normal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="我的训练"/>
         </RelativeLayout>
-        <RelativeLayout
+
+        <include layout="@layout/plan_cover"/>
+
+        <ListView
+            android:id="@+id/lv_train_progress"
             android:layout_width="match_parent"
-            android:layout_height="250dp">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@mipmap/sport_cover"/>
-            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-
-                app:rcBackgroundColor="@color/progrees_background"
-                app:rcProgressColor="@color/progrees_color">
-            </com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar>
-        </RelativeLayout>
-
+            android:layout_height="wrap_content">
+        </ListView>
 
     </LinearLayout>
 </ScrollView>

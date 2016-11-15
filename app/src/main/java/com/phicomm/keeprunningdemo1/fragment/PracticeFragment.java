@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -46,9 +47,16 @@ public class PracticeFragment extends BaseFragment implements View.OnClickListen
     TextView       mTextView;
     @Bind(R.id.iv_badge)
     ImageView      mIvBadge;
+    @Bind(R.id.tv_date)
+    TextView       mTvDate;
+    @Bind(R.id.ll_information_head)
+    LinearLayout   mLlInformationHead;
+    @Bind(R.id.tv_me_train)
+    RelativeLayout mTvMeTrain;
 
 
     private onSkipFragmrnt mOnSkipFragmrnt;
+    private onSkipTrain    mOnSkipTrain;
     private View           mView;
 
     @Override
@@ -66,10 +74,12 @@ public class PracticeFragment extends BaseFragment implements View.OnClickListen
 
     private void initView() {
         mTvInformation = (RelativeLayout) mView.findViewById(R.id.tv_information);
+        mTvMeTrain = (RelativeLayout) mView.findViewById(R.id.tv_me_train);
     }
 
     private void initEvent() {
         mTvInformation.setOnClickListener(this);
+        mTvMeTrain.setOnClickListener(this);
     }
 
 
@@ -83,11 +93,17 @@ public class PracticeFragment extends BaseFragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_information:
-                //接口回调的方式fragment跳转fragment
+                //以接口回调的方式fragment跳转fragment
                 mOnSkipFragmrnt.setOnSkipFragment();
+                break;
+            case R.id.tv_me_train:
+                mOnSkipTrain.setOnSkipTrain();
                 break;
         }
     }
+
+
+
 
 
     public interface onSkipFragmrnt {
@@ -96,5 +112,13 @@ public class PracticeFragment extends BaseFragment implements View.OnClickListen
 
     public void setOnSkipFragment(onSkipFragmrnt skipFragment) {
         this.mOnSkipFragmrnt = skipFragment;
+    }
+
+    public interface onSkipTrain {
+        public void setOnSkipTrain();
+    }
+
+    public void setOnSkipTrain(onSkipTrain skipTrain) {
+        this.mOnSkipTrain = skipTrain;
     }
 }

@@ -32,5 +32,11 @@
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
+
+        <ListView
+            android:id="@+id/lv_train_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
     </LinearLayout>
 </ScrollView>

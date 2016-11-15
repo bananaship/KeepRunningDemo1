@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+    <com.phicomm.keeprunningdemo1.view.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="20dp">
+    </com.phicomm.keeprunningdemo1.view.TitleBar>
+
     <FrameLayout
         android:id="@+id/fl_content"
+        android:layout_below="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_bar"
@@ -38,7 +46,7 @@
             style="@style/BottomBarItem"
             android:textSize="40sp"
             android:text="我" />
-
     </RadioGroup>
+
 
 </RelativeLayout>
